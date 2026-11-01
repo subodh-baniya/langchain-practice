@@ -5,11 +5,11 @@ import os
 load_dotenv()
 
 llm = HuggingFaceEndpoint(
-    repo_id="meta-llama/Llama-3.1-8B-Instruct",  
+    repo_id="ibm-granite/granite-4.2-30b",  
     task="text-generation",
     temperature=0.2,
     max_new_tokens=256, 
-    huggingfacehub_api_token=os.environ.get("HUGGINGFACEHUB_ACCESS_TOKEN"),
+
 )
 
 chat = ChatHuggingFace(llm=llm)
