@@ -8,6 +8,6 @@ llm = GoogleGenerativeAI(
     max_retries=1
 )
 
-response = llm.invoke("Write a short story about a robot learning to fight crime in a futuristic city.")
+response = llm.invoke("who built eiffel tower?")
 
 print(response)
