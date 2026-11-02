@@ -6,8 +6,7 @@ from langchain_core.prompts import PromptTemplate
 load_dotenv()
 
 model=ChatGoogleGenerativeAI(
-    model="gemini-3.5-flash-lite",
-    temperature=0.7,
+    model="gemini-3.5-flash-lite"
 )
 
 template = PromptTemplate(
@@ -17,12 +16,16 @@ template = PromptTemplate(
 
 chain=template|model
 
+chathistory = []
+
 while True:
     user_input = input("You: ")
+    chathistory.append(user_input)
     if user_input.lower() in ["exit", "quit"]:
         print("Exiting the chat. Goodbye!")
         break
 
-    response = chain.invoke({"user_input": user_input})
+    response = chain.invoke(chathistory)
+    chathistory.append(response.content[0]["text"])
     print(f"Bot: {response.content[0]['text']}")
 
