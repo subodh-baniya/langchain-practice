@@ -20,6 +20,7 @@ dependencies = [
     "openai>=3.42.0",
     "python-dotenv>=1.2.4",
     "scikit-learn>=1.9.1",
+    "sentence-transformers>=6.2.0",
     "torch>=2.15.0",
     "transformers>=5.22.1",
 ]

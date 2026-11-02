@@ -15,5 +15,3 @@ result= chat.invoke("What is the capital of France?")
 print(result.content[0]["text"])
 
 print(result.usage_metadata["total_tokens"])
-
-
