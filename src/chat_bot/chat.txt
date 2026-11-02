@@ -1,0 +1,4 @@
+HumanMessage(content="I want to know about my recent order."),
+AIMessage(content="Sure! Please provide your order ID."),
+HumanMessage(content="My order ID is ORD-1001."),
+AIMessage(content="Your order ORD-1001 contains a Samsung Galaxy S24, priced at $799.")

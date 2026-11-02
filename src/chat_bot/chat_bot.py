@@ -1,12 +1,14 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
+from langchain_core.messages import HumanMessage, AIMessage
 
 
 load_dotenv()
 
 model=ChatGoogleGenerativeAI(
-    model="gemini-3.5-flash-lite"
+    model="gemini-3.5-flash-lite",
+    max_retries=1,
 )
 
 template = PromptTemplate(
@@ -20,12 +22,13 @@ chathistory = []
 
 while True:
     user_input = input("You: ")
-    chathistory.append(user_input)
+    chathistory.append(HumanMessage(content=user_input))
     if user_input.lower() in ["exit", "quit"]:
         print("Exiting the chat. Goodbye!")
         break
 
     response = chain.invoke(chathistory)
-    chathistory.append(response.content[0]["text"])
+    chathistory.append(AIMessage(content=response.content[0]["text"]))
     print(f"Bot: {response.content[0]['text']}")
 
+print(chathistory)
