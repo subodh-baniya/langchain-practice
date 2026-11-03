@@ -1,8 +1,15 @@
 from langchain_google_genai import GoogleGenerativeAIEmbeddings,ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from sklearn.metrics.pairwise import cosine_similarity
+from typing import TypedDict
 import os
 
+
+class ModelOutput(TypedDict):
+    content: str
+    department: str
+    category: str
+    
 
 load_dotenv()
 
@@ -79,7 +86,7 @@ models = ChatGoogleGenerativeAI(
     max_retries=1,
 )
 
-
+structured_model=models.with_structured_output(ModelOutput)
 
 question = input("Enter your question: ")
 
@@ -93,15 +100,15 @@ index,sorted_similarities = sorted(enumerate(similarities), key=lambda x: x[1], 
 print(f"Most relevant document: {documents[index]}")
 
 model_prompt = f"""
-You are a helpful assistant. Based on the following document, answer the question below.
+You are a helpful assistant.answer the question below.
 Document: {documents[index]}
 Question: {question}
 Answer:
 """
 
-result = models.invoke(model_prompt)
+result = structured_model.invoke(model_prompt)
 
-print(result.content[0]["text"])
+print(result)
 
 
 
