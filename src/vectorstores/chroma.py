@@ -29,7 +29,7 @@ documents = [
         metadata={"source": "langchain.pdf", "page": 3}
     ),
     Document(
-        page_content="Retrieval-Augmented Generation (RAG) combines information retrieval with text generation. First, documents are divided into smaller chunks and converted into embeddings. These embeddings are stored in a vector database. When a user asks a question, the system retrieves relevant chunks and provides them as context to a language model. The model then generates an answer grounded in the retrieved information.",
+        page_content="Retrieval-Augmented Generation  combines information retrieval with text generation. First, documents are divided into smaller chunks and converted into embeddings. These embeddings are stored in a vector database. When a user asks a question, the system retrieves relevant chunks and provides them as context to a language model. The model then generates an answer grounded in the retrieved information.",
         metadata={"source": "rag_guide.pdf", "page": 10}
     ),
 ]
@@ -44,7 +44,7 @@ vectorstore.add_documents(documents)
 
 search_results= vectorstore.get(include=["metadatas", "embeddings", "documents"])
 
-semantic_search_results = vectorstore.similarity_search("What is LangChain?", k=2)
+semantic_search_results = vectorstore.similarity_search("What is RAG? ", k=1)
 
 print(semantic_search_results)
 
