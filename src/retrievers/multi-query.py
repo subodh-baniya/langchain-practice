@@ -36,10 +36,10 @@ vectorstore = Chroma.from_documents(
     collection_name="my_docs_multi_query"
 )
 
-normal_retriever = vectorstore.as_retriever(search_type="mmr", search_kwargs={"k": 5})
+normal_retriever = vectorstore.as_retriever(search_type="mmr", search_kwargs={"k": 2})
 
 retriever = MultiQueryRetriever.from_llm(
-    retriever=vectorstore.as_retriever(search_type="mmr", search_kwargs={"k": 5}),
+    retriever=vectorstore.as_retriever(search_type="mmr", search_kwargs={"k": 2}),
     llm=llm
 )
 
