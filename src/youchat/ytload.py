@@ -14,7 +14,7 @@ def get_video_id(url):
         raise ValueError("Invalid YouTube URL")
 
 
-video_url = "https://www.youtube.com/watch?v=qfsjoPzbAxQ"
+video_url = "https://www.youtube.com/watch?v=26P1KyvrmjI"
 
 video_id = get_video_id(video_url)
 
@@ -23,4 +23,7 @@ transcript = get_transcript(video_id)
 document = "\n".join([entry.text for entry in transcript])  
 
 def documents():
-    return document
+    return {"document": document, "video_id": video_id}
+
+def get_video_id():
+    return video_id

@@ -10,14 +10,14 @@ text_splitter = RecursiveCharacterTextSplitter(
     length_function=len,
 )
 
-split = text_splitter.split_text(documents)
+split = text_splitter.split_text(documents["document"])
 
 chunks = []
 
 for i, chunk in enumerate(split):
     new_doc = Document(
         page_content=chunk,
-        metadata={"chunk_index": i}
+        metadata={"chunk_index": i, "video_id": documents["video_id"]}
     )
     chunks.append(new_doc)
 
